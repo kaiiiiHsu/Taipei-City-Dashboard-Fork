@@ -56,7 +56,15 @@ Taipei-City-Dashboard-FE/.env.test
 
 # docker-compose
 # db data
-docker/db-data
+# 排除所有檔案
+*
+# 逐層允許特定目錄
+!docker/
+!docker/db-data/
+!docker/db-data/pgadmin-data/
+!docker/db-data/pgadmin-data/storage/
+!docker/db-data/pgadmin-data/storage/**
+
 # nginx ssl
 docker/nginx/ssl
 
