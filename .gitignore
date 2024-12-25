@@ -56,14 +56,19 @@ Taipei-City-Dashboard-FE/.env.test
 
 # docker-compose
 # db data
-# 排除所有檔案
-*
 # 逐層允許特定目錄
-!docker/
+docker/db-data/*
+# 允許追蹤 docker/db-data/ 資料夾
 !docker/db-data/
-!docker/db-data/pgadmin-data/
-!docker/db-data/pgadmin-data/storage/
+# 允許追蹤 docker/db-data/pgadmin-data 資料夾
+!docker/db-data/pgadmin-data
+# 忽略 docker/db-data/pgadmin-data/ 資料夾中的所有內容
+docker/db-data/pgadmin-data/*
+# 允許追蹤 docker/db-data/postgres-data/storage 資料夾內的所有檔案
 !docker/db-data/pgadmin-data/storage/**
+
+#車牌辨識模組
+!car/
 
 # nginx ssl
 docker/nginx/ssl
