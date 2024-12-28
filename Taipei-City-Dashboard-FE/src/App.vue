@@ -75,6 +75,7 @@ onBeforeUnmount(() => {
 	clearInterval(updateTimeToUpdate);
 	// contentStore.wsDisconnect();
 });
+
 </script>
 
 <template>
