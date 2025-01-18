@@ -1,0 +1,71 @@
+.navbar {
+  background-color: #007bff;
+  color: white;
+  padding: 5vh 10vh;
+  transition: background-color 0.3s ease;
+}
+.navbar.dark-mode {
+  background-color: #333;
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* Brand */
+.nav-brand {
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  margin-right: 20px;
+}
+
+.plates-link {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1rem;
+  background-color: #17a2b8;
+  padding: 6px 12px;
+  border-radius: 6px;
+  margin-right: 20px;
+}
+
+.nav-items {
+  margin-left: auto;
+  display: flex;
+  gap: 10px;
+}
+
+.theme-toggle {
+  background: none;
+  border: 1px solid #ddd;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 6px 12px;
+  background-color: #444;
+  color: white;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background-color: #666;
+}
+
+.navbar.dark-mode .theme-toggle {
+  background-color: #ccc;
+  color: black;
+}
+
+.logout-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 15px;
+  cursor: pointer;
+}

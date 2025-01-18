@@ -1,0 +1,112 @@
+
+.login-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* 水平置中 */
+  justify-content: flex-start; /* 靠上對齊 */
+  padding-top: 200px;        /* 加一點上方間距 */
+  background-color: #ffffff;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.login-container.dark-mode {
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+.login-card {
+  width: 350px;
+  margin: 0 auto; /* 水平置中 */
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.dark-mode .login-card {
+  background-color: #2d2d2d;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.login-card h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.dark-mode .login-card h2 {
+  color: #fff;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.dark-mode .login-card label {
+  color: #ccc;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  font-size: 1rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+input:focus {
+  outline: none;
+  border-color: #007bff;
+  background-color: #fff;
+}
+
+.dark-mode .login-card input {
+  background-color: #555;
+  color: #fff;
+  border-color: #666;
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 0.8rem;
+  margin-top: 5px;
+  display: block;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #0056b3;
+}
+
+.login-btn:disabled {
+  background: #ddd;
+  cursor: not-allowed;
+}

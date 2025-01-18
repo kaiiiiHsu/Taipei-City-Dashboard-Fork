@@ -1,0 +1,116 @@
+/* 基本樣式 */
+html, body {
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#app {
+  min-height: 100vh;
+  background-color: #f5f5f5; /* 淺色模式背景 */
+  color: #333;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#app.dark-mode {
+  background-color: #1a1a1a; /* 深色模式背景 */
+  color: #fff;
+}
+
+/* Navbar 樣式 */
+.navbar {
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  transition: all 0.3s ease;
+}
+
+.navbar.dark-mode {
+  background-color: #2d2d2d;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.navbar .nav-brand {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navbar.dark-mode .nav-brand {
+  color: #fff;
+}
+
+.navbar .theme-toggle {
+  padding: 6px 12px;
+  background: transparent;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.navbar.dark-mode .theme-toggle {
+  border-color: #4d4d4d;
+  color: #fff;
+}
+
+.navbar .logout-btn {
+  padding: 6px 12px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.navbar .logout-btn:hover {
+  background-color: #c82333;
+}
+
+/* 列印樣式 */
+@media print {
+  /* 隱藏 Navbar 和按鈕 */
+  .navbar {
+    display: none !important;
+  }
+
+  .theme-toggle,
+  .logout-btn,
+  .print-button,
+  .email-button {
+    display: none !important;
+  }
+
+  /* 列印背景和內容樣式 */
+  body {
+    background-color: white !important;
+    color: black !important;
+  }
+
+  #app {
+    background-color: white !important;
+  }
+
+  .report-system {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .card {
+    box-shadow: none !important;
+    background-color: white !important;
+  }
+}

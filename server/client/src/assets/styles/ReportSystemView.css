@@ -1,0 +1,117 @@
+/* 外層背景 + 主區塊 */
+.report-system {
+  min-height: 100vh;
+  background-color: #f4f6f8;
+  transition: background-color 0.3s, color 0.3s;
+}
+.report-system.dark-mode {
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+.main-content {
+  /* 加大整體容器寬度，讓左右框框有更多空間 */
+  max-width: 1400px;  /* 原本是1200，可再加大 */
+  margin: 0 auto;
+  padding: 30px;      /* 上下左右留白更大 */
+}
+
+.report-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 35px; /* 增加標題下方空間 */
+}
+
+/* 使用 Grid 布局，並增加 gap */
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 左右等寬 */
+  gap: 60px; /* 原本40 => 60，讓左右框框距離更大 */
+  align-items: stretch; /* 兩邊卡片同高 */
+}
+
+/* 卡片樣式 */
+.card {
+  display: flex;
+  flex-direction: column; /* 內容垂直排列 */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1); /* 陰影再重點 */
+  padding: 30px;  /* 原本20 => 30，讓卡片內部更寬敞 */
+  transition: background-color 0.3s ease;
+}
+.report-system.dark-mode .card {
+  background-color: #2d2d2d;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.5);
+}
+
+.info-grid p {
+  margin-bottom: 12px;
+  font-size: 1.05rem; /* 稍微大一點 */
+  line-height: 1.6;   /* 增加行距 */
+}
+
+/* 注意事項 */
+.notice {
+  margin-top: 25px; /* 多留點空間 */
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+}
+.notice ol {
+  margin: 0;
+  padding-left: 25px; /* 行距可再增加 */
+  color: #666;
+}
+.report-system.dark-mode .notice ol {
+  color: #ccc;
+}
+
+/* 右卡-圖片容器 */
+.image-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  border: 2px dashed #ddd;
+  border-radius: 8px;
+}
+.report-system.dark-mode .image-container {
+  border-color: #555;
+}
+
+.violation-image {
+  max-width: 100%;
+  max-height: 400px; /* 若想再大點可改 */
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* 按鈕群 */
+.button-group {
+  display: flex;
+  gap: 15px; /* 稍微加大按鈕間距 */
+  justify-content: center;
+}
+.print-button,
+.email-button,
+.done-button {
+  padding: 12px 28px; /* 按鈕也更大些 */
+  background-color: #2f82ff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.print-button:hover,
+.email-button:hover,
+.done-button:hover {
+  background-color: #1b5fc4;
+}
+
+/* 列印時隱藏按鈕 */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}

@@ -1,6 +1,8 @@
 from dotenv import load_dotenv
 import requests
 import os
+import subprocess #傳遞參數腳本
+import sys ##拿來讀傳遞的參數
 
 load_dotenv()
 api_key = os.getenv('API_KEY')
@@ -25,11 +27,14 @@ def get_lat_lng(address):
 
 # 主程式
 if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        param = "default"
+    else:
+        address=sys.argv[1]
     # 測試地址
-    address = "台北101"
     coordinates = get_lat_lng(address)
     if coordinates:
-        print(f"地址: {address}")
-        print(f"經緯度: 緯度 = {coordinates[0]}, 經度 = {coordinates[1]}")
+        #print(f"地址: {address}")
+        print(f"{coordinates[0]},{coordinates[1]}") # 經度, 緯度
     else:
         print("無法獲取經緯度")

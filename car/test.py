@@ -9,10 +9,11 @@ import sys
 import pyocr
 import pyocr.builders
 import re
+import subprocess #傳遞參數腳本
 
 # 手動指定 Tesseract 的安裝路徑
-os.environ['TESSDATA_PREFIX'] = r".car\\Tesseract-OCR"
-os.environ['PATH'] += os.pathsep + r".car\\Tesseract-OCR"
+os.environ['TESSDATA_PREFIX'] = ".\\Tesseract-OCR"
+os.environ['PATH'] += os.pathsep + ".\\Tesseract-OCR"
 
 
 def emptydir(dirname):         #清空資料夾
@@ -58,7 +59,7 @@ print('開始擷取車牌！')
 print('無法擷取車牌的圖片：')
 dstdir = 'cropPlate'
 emptydir(dstdir)
-myfiles = glob.glob("predictPlate_resized\*.JPG")
+myfiles = glob.glob("predictPlate_resized\\*.JPG")
 for imgname in myfiles:
     filename = (imgname.split('\\'))[-1]  #取得檔案名稱
     img = cv2.imread(imgname)  #讀入圖形
@@ -77,7 +78,7 @@ for imgname in myfiles:
         print(filename)
 
 print('擷取車牌結束！')
-#############################################################################################
+#####圖片預處理########################################################################################
 
 # 設定圖片來源資料夾與處理後儲存資料夾
 input_folder = ".\\car\\cropPlate\\"
@@ -122,7 +123,9 @@ for image_path in image_paths:
 
     print(f"處理圖片: {image_path}")
     image_name = os.path.basename(image_path)  # 取得檔案名稱
-    output_path = os.path.join(output_folder, f"processed_{image_name}")  # 輸出路徑
+    print(image_name)
+    output_path = os.path.join(output_folder, f"A_{image_name}")  # 輸出路徑
+    print(output_path)
 
     # 灰階處理
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -212,11 +215,11 @@ for image_path in image_paths:
 
 print("所有圖片處理完成！")
 
-###############################################################################################
+#####車牌辨識##########################################################################################
 
 
 # 設定圖片來源資料夾
-input_folder = r".\\car\\processed"
+input_folder = r".\\processed"
 
 # OCR 辨識車牌的主程式
 def process_images(folder_path):
@@ -243,7 +246,11 @@ def process_images(folder_path):
         image_path = os.path.join(folder_path, image_file)
         print(f"處理圖片: {image_path}")
 
-       # 讀取圖片
+        # 提取文件名（不包括路徑與副檔名）
+        file_name = os.path.basename(image_file)
+        photo_name = os.path.splitext(file_name)[0]
+
+        # 讀取圖片
         image = cv2.imread(image_path)
         if image is None:
             print(f"無法讀取圖片: {image_path}")
@@ -265,6 +272,10 @@ def process_images(folder_path):
 
             print("OCR 辨識結果：", result)
             print("優化後辨識結果：", txt_Plate)
+            try:
+                subprocess.run(["python", "writeSQL.py", txt_Plate, photo_name], check=True)
+            except subprocess.CalledProcessError as e:
+                print(f"Error while calling process_id.py: {e}")
 
         except Exception as e:
             print(f"OCR 辨識失敗: {e}")
